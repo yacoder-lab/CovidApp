@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+     <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+
+
+    <style>
+        body{
+
+            background-color: #6C7A86 ;
+
+        }
+        
+        table {
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid black;
+  padding:20px;
+}
+        #nav{
+	width:100%;
+}
+        
+  
+    </style>
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+	<div class="col-md-12 p-2 navbar-light bg-light rounded-3">
+
+				<div class="d-flex bd-highlight mb-3">
+
+					<div class="mx-auto p-2 bd-highlight">
+						<div id="menu">
+							<div id="menu-bar" onclick="menuOnClick()">
+								<div id="bar1" class="bar"></div>
+								<div id="bar2" class="bar"></div>
+								<div id="bar3" class="bar"></div>
+							</div>
+							<nav class="nav" id="nav">
+								<ul>
+									<li><a th:href="@{/admin/login}">Home</a></li>
+									<li><a th:href="@{/admin/login}">Logout</a></li>
+
+								
+								</ul>
+							</nav>
+						</div>
+
+						<div class="menu-bg" id="menu-bg"></div>
+					</div>
+					<div>
+						<a class="bd-highlight btn btn-outline-primary" id="buttons" th:href="@{/}">logout</a>
+
+					</div>
+					
+
+				</div>
+			</div>
+            </div>
+            
+
+	
+
+		<div class="row my-2">
+			
+			<form th:action="@{/admin/search}" method="post">
+		<div class="col-md-2">
+		<h5>By City</h5>
+		<select class="form-select" aria-label="Default select example" th:name="city" id="city">
+  
+  <option  th:each="user :${byCity}" th:text="${user.city}" ></option >
+ 
+</select>
+</div>
+
+
+		<div class="col-md-2">
+		<h5>By State</h5>
+		<select class="form-select" th:name="state" id="state" >
+  <option   th:each="user :${byState}" th:text="${user.state}"></option>
+</select>
+</div>
+		
+		
+<div class="col-md-2">
+	
+	
+    </div>
+    
+    <button type="submit">submit</button>
+
+<table >
+  <tr >
+    <th>State</th>
+    <th>Name</th>
+    <th>First Name</th>
+  </tr >
+  <tr th:each="d :${data}" >
+    <td   th:text="${d.state}"></td>
+    <td   th:text="${d.city}"></td>
+	<td th:text="${d.first_Name}"></td >
+  </tr  >
+  
+
+</table   >    
+
+</form>
+
+<div>
+
+
+</div>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>function menuOnClick() {
+		document.getElementById("menu-bar").classList.toggle("change");
+		document.getElementById("nav").classList.toggle("change");
+		document.getElementById("menu-bg").classList.toggle("change-bg");
+	}
+	
+</script>
